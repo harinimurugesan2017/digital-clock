@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital clock</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="container">
+      <h1>Digital clock</h1>
+        <div id="wrapper">
+            <span id="hours">00</span>
+            <span>:</span>
+            <span id="minutes">00</span>
+            <span>:</span>
+            <span id="seconds">00</span>
+            <span id="amp">AM</span>
+           
+        </div>
+    </div>
+    <script>
+         let ampm=document.getElementById("amp")
+        function displayTime(){
+            let datetime= new Date()
+            let hour=  datetime.getHours();
+            let mins=padZero(datetime.getMinutes());
+            let sec= padZero( datetime.getSeconds());
+            if( hour>12){
+                hour=hour-12
+                ampm.innerHTML='pm'
+            }
+            document.getElementById("hours").innerHTML=hour;
+            document.getElementById("minutes").innerHTML=mins;
+            document.getElementById("seconds").innerHTML=sec;
+
+        }
+        function padZero(num){
+            if(num<10)
+            {
+               return "0"+ num
+            } 
+            else
+              return num
+        }
+        setInterval(displayTime,1000);
+    </script>
+</body>
+</html>
